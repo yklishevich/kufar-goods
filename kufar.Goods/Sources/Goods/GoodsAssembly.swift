@@ -3,7 +3,7 @@ import GoodsData
 import GoodsDomain
 import GoodsUI
 import AnalyticsAPI
-import Networking
+import NetworkingInterface
 import SharedKernel
 
 /// Единственный продукт пакета. GoodsUI, GoodsData и GoodsDomain
@@ -15,7 +15,7 @@ import SharedKernel
 /// но не от компилятора, в отличие от AnyView.
 public enum GoodsAssembly {
 
-    public static func makeRepository(client: APIClient) -> any GoodsRepository {
+    public static func makeRepository(client: any HTTPPerforming) -> any GoodsRepository {
         RemoteGoodsRepository(client: client)
     }
 

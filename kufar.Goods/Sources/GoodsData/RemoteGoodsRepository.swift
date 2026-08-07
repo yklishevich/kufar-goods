@@ -1,14 +1,14 @@
 import Foundation
 import GoodsDomain
-import Networking
+import NetworkingInterface
 import SharedKernel
 
 /// Реализация протокола из домена. Импортируется ровно одним таргетом — Goods.
 /// GoodsUI её не видит: инверсия зависимостей.
 package struct RemoteGoodsRepository: GoodsRepository {
-    private let client: APIClient
+    private let client: any HTTPPerforming
 
-    package init(client: APIClient) {
+    package init(client: any HTTPPerforming) {
         self.client = client
     }
 
